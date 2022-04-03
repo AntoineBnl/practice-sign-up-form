@@ -1,0 +1,289 @@
+@import 'reset.css';
+
+@font-face {
+  font-family: "Norse Bold";
+  src: url("fonts/Norse-Bold.otf");
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter.var.woff2") format("woff2 supports variations"),
+       url("fonts/Inter.var.woff2") format("woff2-variations");
+  font-weight: 1 999;
+  font-stretch: 75% 100%;
+  font-style: oblique 0deg 20deg;
+  font-display: swap;
+}
+
+body {
+  background-color: hsl(0, 0%, 44%);
+  color: #fbfbfe;
+  font-family: Inter, var(--system-font-stack);
+  display: flex;
+  justify-content: center;
+}
+
+.main-container {
+  max-width: 1368px;
+  min-height: 100vh;
+  display: flex;
+  background-color: hsl(210, 20%, 98%);
+}
+
+/* LEFT SIDE */
+
+.side-hero {
+  flex: 0.59;
+  position: relative;
+}
+
+.side-hero > img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.side-hero > p {
+  position: absolute;
+  bottom: 1%;
+  width: 100%;
+  text-align: center;
+  font-size: .8rem;
+}
+
+.side-hero a {
+  color: white;
+}
+
+.side-hero a:hover {
+  color: hsl(81, 30%, 50%);
+}
+
+.logo-banner {
+  width: 100%;
+  position: absolute;
+  top: 16%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.logo-banner > img {
+  height: 100px;
+}
+
+.logo-text {
+  font-family: "Norse Bold", var(--system-font-stack);
+  font-size: 4rem;
+}
+
+/* RIGHT SIDE */
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  color: #222;
+}
+
+.upper {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem 0 3rem 3rem;
+}
+
+.upper > p {
+  width: 90%;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.mid {
+  flex: 0.8;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 1.6rem 2rem 2rem 3rem;
+  position: relative;
+}
+
+.mid::before {
+  content: "Fields marked * are required";
+  font-style: italic;
+  font-size: .9rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: .5rem 1rem;
+}
+
+.mid h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1.4rem;
+}
+
+.main-content form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  align-items: flex-start;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 4rem;
+  row-gap: 2rem;
+}
+
+.form-entry {
+  max-width: 260px;
+  position: relative;
+}
+
+.form-entry label {
+  margin-right: 2rem;
+  font-size: .9rem;
+}
+
+.form-entry input[type="text"],
+.form-entry input[type="email"],
+.form-entry input[type="tel"],
+.form-entry input[type="password"] {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid hsl(220, 13%, 91%);
+  padding: .2rem .5rem;
+}
+
+.form-entry input:required + span::before {
+  content: "*";
+  position: absolute;
+  top: .2rem;
+  right: .2rem;
+}
+
+.form-entry input:focus {
+  outline: none;
+  border-color: hsl(220, 80%, 60%);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 6px, inset hsl(220, 80%, 60%) 0 0 0px 1px;
+}
+
+.form-entry input:not(:placeholder-shown):not(:focus):invalid {
+  color: red;
+  border-color: red;
+}
+
+.form-entry input[type="password"].not-matching:not(:focus) {
+  border-color: red;
+}
+
+.form-entry input[type="password"].not-matching:not(.input-confirm) + span::after {
+  content: "* Passwords do not match";
+  color: red;
+  font-size: .8rem;
+  position: absolute;
+  bottom: -1.3rem;
+  left: 0;
+}
+
+.lower {
+  flex: 1;
+  padding: 2rem 2rem 2rem 3rem;
+}
+
+.lower button[type="submit"] {
+  padding: .8rem 2.4rem;
+  border-radius: 12px;
+  border: none;
+  font-weight: bold;
+  background-color: hsl(81, 26%, 26%);
+  color: white;
+  transition: transform ease-in 0.05s;
+  cursor: pointer;
+  margin: 1rem 0 0;
+}
+
+.lower button[type="submit"]:hover {
+  background-color: hsl(81, 26%, 39%);
+}
+
+.lower button[type="submit"]:active {
+  transform: scale(0.95);
+}
+
+.lower p {
+  margin: 2rem 0 3rem 0 ;
+}
+
+.lower a {
+  color: hsl(81, 36%, 31%);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.lower a:hover {
+  color: hsl(81, 33%, 46%);
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 901px) and (max-width: 1100px) {
+  .main-content form {
+    width: 500px;
+    margin: 0 auto;
+  }
+  .form-entry {
+    max-width: none;
+    display: flex;
+    align-items: center;
+  }
+  .form-entry label {
+    text-align: right;
+    width: 152px;
+  }
+  .form-entry input[type="text"],
+  .form-entry input[type="email"],
+  .form-entry input[type="tel"],
+  .form-entry input[type="password"] {
+    width: 300px;
+  }
+  .form-entry input:required + span::before {
+    top: .4rem;
+    right: -1rem;
+  }
+  .form-entry input[type="password"].not-matching:not(.input-confirm) + span::after {
+    bottom: -1.3rem;
+    left: 11.6rem;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .main-content form {
+    align-items: center;
+  }
+  .side-hero {
+    display: none;
+  }
+  .lower {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .lower button[type="submit"] {
+    margin: 2rem 0 1rem;
+  }
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 680px) {
+  .main-content form {
+    align-items: center;
+  }
+  .form-row {
+    max-width: 260px;
+  }
+  .lower button[type="submit"] {
+    margin: 0;
+  }
+}
